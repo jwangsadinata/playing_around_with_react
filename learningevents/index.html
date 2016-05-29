@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../build/react.js"></script>
+<script src="../build/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+<link rel="stylesheet" href="css/base.css" />
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script type="text/babel">
+     // learning about different functions, and also events
+
+		var ChildComponent = React.createClass({
+			render: function() {
+				return (
+					<div>
+						<div className="prompt">Add a click handler</div>
+						<button onClick={this.props.onMagicClick}>Do Magic</button>
+					</div>
+				);
+			}
+		});
+
+		var ParentComponent = React.createClass({
+			performMagic: function() {
+				alert('TAADAH!');
+			},
+
+			render: function() {
+				return (
+					<div>
+						<ChildComponent onMagicClick={this.performMagic} />
+					</div>
+				);
+			}
+		})
+
+		ReactDOM.render(
+			<ParentComponent />,
+			document.getElementById('container')
+		);
+   </script>
+</body>
+</html>
